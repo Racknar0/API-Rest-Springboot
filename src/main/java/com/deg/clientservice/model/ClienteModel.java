@@ -30,7 +30,7 @@ public class ClienteModel {
     private LocalDate fecha_nacimiento;
 
 
-    /* private Integer edad; */
+    
 
 
 }

@@ -1,5 +1,6 @@
 package com.deg.clientservice.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,14 +49,15 @@ public class ClienteController {
 
         try {
             System.out.println("************************************************************: ");
-           /* añadir la edad al objeto devuelto */
-           System.out.println(clienteService.calcularEdad(cliente.getFecha_nacimiento()));
+            /* añadir la edad al objeto devuelto */
 
-          /*  cliente.setFecha_nacimiento(clienteService.calcularEdad(cliente.getFecha_nacimiento())); */
+            String nombre = cliente.getNombre();
+            String apellido = cliente.getApellido();
+            Integer edadInteger = clienteService.calcularEdad(cliente.getFecha_nacimiento());
 
+            /* retornar una respuesta con el objeto en formato JSON */
+            return ResponseEntity.ok().body("{ \"nombre\": \"" + nombre + "\", \"apellido\": \"" + apellido + "\",  \"edad\": \"" + edadInteger + "\" }");
 
-
-            return new ResponseEntity<>(this.clienteService.createClient(cliente), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
