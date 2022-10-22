@@ -1,5 +1,7 @@
 package com.deg.clientservice.service;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,11 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
+    public Integer calcularEdad(LocalDate fecha_nacimiento) {
+        LocalDate fechaActual = LocalDate.now();
+        Period periodo = Period.between(fecha_nacimiento, fechaActual);
+        return periodo.getYears();
+    }
     
     
 }

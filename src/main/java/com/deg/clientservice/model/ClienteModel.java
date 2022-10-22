@@ -15,6 +15,7 @@ import lombok.Data;
 @Table(name = "cliente")
 public class ClienteModel {
 
+
     @Id
     @GeneratedValue
     private Integer id;
@@ -27,5 +28,9 @@ public class ClienteModel {
 
     @Column(name = "fecha_nacimiento")
     private LocalDate fecha_nacimiento;
+
+
+    /* private Integer edad; */
+
 
 }
